@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { StrictMode, Suspense, lazy } from 'react'
+import { Provider } from 'react-redux'
+import store from '@/store'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from '@/views/Home'
+import { ThemeProvider } from '@mui/material'
+import Nprogress from '@/components/Nprogress'
+import theme from './theme'
+
+const About = lazy(() => import('@/views/About'))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StrictMode>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Suspense fallback={<Nprogress />}>
+            <BrowserRouter>
+              <Routes>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+              </Routes>
+            </BrowserRouter>
+          </Suspense>
+        </ThemeProvider>
+      </Provider>
+    </StrictMode>
+  )
 }
 
-export default App;
+export default App
