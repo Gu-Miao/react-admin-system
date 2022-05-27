@@ -8,6 +8,7 @@ import Nprogress from '@/components/Nprogress'
 import theme from './theme'
 
 const About = lazy(() => import('@/views/About'))
+const Error = lazy(() => import('@/views/Error'))
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Routes>
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
+                <Route path="*" element={<Error />} />
               </Routes>
             </BrowserRouter>
           </Suspense>
