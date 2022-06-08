@@ -11,9 +11,8 @@
     "fix": "eslint --fix ."
   },
   "dependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.8.1",
+    "@mantine/core": "^4.2.8",
+    "@mantine/hooks": "^4.2.8",
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.27.2",
     "nprogress": "^0.2.0",
