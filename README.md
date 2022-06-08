@@ -2,6 +2,7 @@
 
 ## Features
 
+[x] React 18
 [x] Customize webpack config
 [x] Scss, tailwind
 [x] Typescript
@@ -17,4 +18,4 @@
 [ ] Responsive
 [ ] Animation
 [ ] Themes
-[x] Customize webpack config
+[ ] Dark Mode
