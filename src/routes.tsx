@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom'
 import { Suspense, lazy, ReactNode } from 'react'
 import Nprogress from './components/Nprogress'
-import AppLayout from './views/AppLayout'
+import Layout from './components/Layout/Layout'
 import Home from './views/Home'
 
 /**
@@ -21,7 +21,7 @@ function getLazyComponent(path: string): ReactNode {
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <AppLayout />,
+    element: <Layout />,
     children: [
       {
         index: true,
