@@ -1,8 +1,34 @@
 {
-  "name": "blog",
+  "name": "react-admin",
   "version": "0.1.0",
-  "description": "My blog",
-  "private": true,
+  "description": "Admin system built with react",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gu-Miao/react-admin.git"
+  },
+  "keywords": [
+    "react",
+    "mantine",
+    "typescript",
+    "create-react-app",
+    "prettier",
+    "husky",
+    "webpack",
+    "PWA",
+    "i18n",
+    "redux",
+    "tailwind",
+    "scss"
+  ],
+  "author": {
+    "name": "Gu-Miao",
+    "email": "1450206741@qq.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gu-Miao/react-admin/issues"
+  },
+  "homepage": "https://github.com/Gu-Miao/react-admin#readme",
   "scripts": {
     "prepare": "husky install",
     "start": "react-app-rewired start",
