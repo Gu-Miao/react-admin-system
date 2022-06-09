@@ -33,16 +33,9 @@ function AppLayout() {
   const [dir, toggleDirection] = useToggle<DirectionContextProps['dir']>('ltr', ['ltr', 'rtl'])
 
   return (
-    <DirectionContext.Provider
-      value={{
-        dir,
-        toggleDirection
-      }}
-    >
+    <DirectionContext.Provider value={{ dir, toggleDirection }}>
       <MantineProvider
-        theme={{
-          dir
-        }}
+        theme={{ dir }}
         emotionOptions={
           dir === 'rtl' ? { key: 'mantine-rtl', stylisPlugins: [rtlPlugin] } : { key: 'mantine' }
         }
