@@ -1,6 +1,6 @@
 import { useContext, createContext } from 'react'
 
-export type DirectionContextProps = {
+export interface DirectionContextProps {
   dir: 'rtl' | 'ltr'
   toggleDirection(): void
 }

@@ -34,7 +34,7 @@ import HeaderControl from './HeaderControl'
 import useBoolean from '@/hooks/useBoolean'
 import { useDirectionContext } from '../DirectionContext'
 
-type AppHeaderProps = {
+interface AppHeaderProps {
   opened: boolean
   onOpenedChange: MouseEventHandler<HTMLButtonElement>
 }
