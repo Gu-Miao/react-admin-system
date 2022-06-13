@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import { Link, LinkProps, matchRoutes, useLocation, RouteMatch } from 'react-router-dom'
 import { List, UnstyledButton } from '@mantine/core'
-import CollapseItem from '@/components/CollapseItem/CollapseItem'
+import CollapseMenuItem from './CollapseMenuItem'
 import routes, { RouteWithMeta } from '@/routes'
 import useStyles from './NavbarMenu.sytles'
 
@@ -21,20 +21,6 @@ const MenuItem: FC<PropsWithChildren<{ to: LinkProps['to']; active?: boolean }>>
         {children}
       </UnstyledButton>
     </List.Item>
-  )
-}
-
-const ItemWithChildren: FC<PropsWithChildren<{ label?: string; defaultOpened?: boolean }>> = ({
-  label,
-  defaultOpened,
-  children
-}) => {
-  const props: { initialItem?: number } = {}
-  if (defaultOpened) props.initialItem = 0
-  return (
-    <CollapseItem label={label} open={defaultOpened}>
-      <MenuList>{children}</MenuList>
-    </CollapseItem>
   )
 }
 
@@ -67,9 +53,11 @@ const MenuItems: FC<MenuItemProps> = ({ routes, prefix = '', matchedRoutes }) =>
         if (route.children) {
           return (
             <List.Item key={path}>
-              <ItemWithChildren defaultOpened={isMatched} label={route.meta?.title}>
-                <MenuItems routes={route.children} prefix={path} matchedRoutes={rest} />
-              </ItemWithChildren>
+              <CollapseMenuItem defaultOpened={isMatched} label={route.meta?.title}>
+                <MenuList>
+                  <MenuItems routes={route.children} prefix={path} matchedRoutes={rest} />
+                </MenuList>
+              </CollapseMenuItem>
             </List.Item>
           )
         }

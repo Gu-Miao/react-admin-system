@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
@@ -8,15 +7,13 @@ import theme from './theme'
 
 function App() {
   return (
-    <StrictMode>
-      <Provider store={store}>
-        <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
-        </MantineProvider>
-      </Provider>
-    </StrictMode>
+    <Provider store={store}>
+      <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </MantineProvider>
+    </Provider>
   )
 }
 
