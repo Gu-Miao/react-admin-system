@@ -4,6 +4,7 @@ import { List, UnstyledButton } from '@mantine/core'
 import CollapseMenuItem from './CollapseMenuItem'
 import routes, { RouteWithMeta } from '@/routes'
 import useStyles from './NavbarMenu.sytles'
+import useConst from '@/hooks/useConst'
 
 const MenuList: FC<PropsWithChildren> = ({ children }) => {
   return <List listStyleType="none">{children}</List>
@@ -27,8 +28,9 @@ const MenuItem: FC<PropsWithChildren<{ to: LinkProps['to']; active?: boolean }>>
 function NavbarMenu() {
   const location = useLocation()
   const [, ...matchedRoutes] = matchRoutes(routes, location, process.env.PUBLIC_URL) as RouteMatch[]
-
-  const topLevelRoutes = routes.find(route => route.path === '/')?.children as RouteWithMeta[]
+  const topLevelRoutes = useConst(
+    routes.find(route => route.path === 'dashboard')?.children as RouteWithMeta[]
+  )
   return (
     <MenuList>
       <MenuItems routes={topLevelRoutes} matchedRoutes={matchedRoutes} />

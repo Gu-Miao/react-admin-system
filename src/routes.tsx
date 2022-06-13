@@ -1,15 +1,15 @@
 import { RouteObject } from 'react-router-dom'
 import { Suspense, lazy, ReactNode } from 'react'
 import Nprogress from './components/Nprogress'
-import Layout from './components/Layout/Layout'
 import Home from './views/Home'
 
 /**
  * Get lazy component
- * @param path Component path, relative to `/src/views/`
+ * @param path Component path, relative to `/src/${prefix}/`
+ * @param prefix Component path prefix, default is `views`
  */
-export function getLazyComponent(path: string): ReactNode {
-  const Component = lazy(() => import(`./views/${path}`))
+export function getLazyComponent(path: string, prefix = 'views'): ReactNode {
+  const Component = lazy(() => import(`./${prefix}/${path}`))
 
   return (
     <Suspense fallback={<Nprogress />}>
@@ -29,46 +29,103 @@ export interface RouteWithMeta extends RouteObject {
 const routes: RouteWithMeta[] = [
   {
     path: '/',
-    element: <Layout />,
+    element: <Home />
+  },
+  {
+    path: 'dashboard',
+    element: getLazyComponent('Layout/Layout', 'components'),
     children: [
       {
         index: true,
         meta: { title: 'Overview' },
-        element: <Home />
+        element: getLazyComponent('Dashboard/Overview')
       },
       {
         path: 'data',
         meta: { title: 'Data' },
-        element: <Home />,
+        element: getLazyComponent('Dashboard/Overview'),
         children: [
-          { path: 'terrain', meta: { title: 'Terrain' }, element: <Home /> },
-          { path: '3d-tiles', meta: { title: '3D Tiles' }, element: <Home /> },
-          { path: 'models', meta: { title: 'Models' }, element: <Home /> },
+          {
+            path: 'map-tiles',
+            meta: { title: 'Map tiles' },
+            element: getLazyComponent('Dashboard/Overview')
+          },
+          {
+            path: 'terrain',
+            meta: { title: 'Terrain' },
+            element: getLazyComponent('Dashboard/Overview')
+          },
+          {
+            path: 'labels',
+            meta: { title: 'Labels' },
+            element: getLazyComponent('Dashboard/Overview')
+          },
+          {
+            path: 'models',
+            meta: { title: 'Models' },
+            element: getLazyComponent('Dashboard/Overview')
+          },
+          {
+            path: '3d-tiles',
+            meta: { title: '3D tiles' },
+            element: getLazyComponent('Dashboard/Overview'),
+            children: [
+              {
+                path: 'buildings',
+                meta: { title: 'Buildings' },
+                element: getLazyComponent('Dashboard/Overview')
+              },
+              {
+                path: 'trees',
+                meta: { title: 'Trees' },
+                element: getLazyComponent('Dashboard/Overview')
+              },
+              {
+                path: 'highways',
+                meta: { title: 'Highways' },
+                element: getLazyComponent('Dashboard/Overview')
+              }
+            ]
+          },
           {
             path: 'materials',
             meta: { title: 'Materials' },
-            element: <Home />,
-            children: [
-              { path: 'ad2', meta: { title: 'Point' }, element: <Home /> },
-              { path: 'ad3', meta: { title: 'Polyline' }, element: <Home /> },
-              { path: 'ad332', meta: { title: 'Polygon' }, element: <Home /> },
-              { path: 'ad52', meta: { title: 'Geometry' }, element: <Home /> }
-            ]
+            element: getLazyComponent('Dashboard/Overview')
           }
         ]
       },
       {
-        path: 'test-examples',
-        meta: { title: 'Test examples' },
-        element: <Home />
+        path: 'test',
+        meta: { title: 'Test' },
+        element: getLazyComponent('Dashboard/Overview'),
+        children: [
+          {
+            path: 'test-examples',
+            meta: { title: 'Test examples' },
+            element: getLazyComponent('Dashboard/Overview')
+          },
+          {
+            path: 'tasks',
+            meta: { title: 'Tasks' },
+            element: getLazyComponent('Dashboard/Overview')
+          }
+        ]
       },
       {
-        path: 'tasks',
-        meta: { title: 'Tasks' },
-        element: <Home />,
-        children: [{ path: 'management', meta: { title: 'Task Management' }, element: <Home /> }]
+        path: 'access-tokens',
+        meta: { title: 'Access Tokens' },
+        element: getLazyComponent('Dashboard/Overview')
       },
-      { path: 'preview', meta: { title: 'Preview' }, element: <Home /> }
+      {
+        path: 'document',
+        meta: { title: 'Document' },
+        element: getLazyComponent('Dashboard/Overview')
+      },
+      {
+        path: 'blogs',
+        meta: { title: 'Blogs' },
+        element: getLazyComponent('Dashboard/Overview')
+      }
     ]
   },
   { path: 'about', element: getLazyComponent('About') },

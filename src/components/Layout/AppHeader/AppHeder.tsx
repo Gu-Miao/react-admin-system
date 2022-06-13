@@ -56,7 +56,7 @@ const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
             mr="xl"
           />
         </MediaQuery>
-        <UnstyledButton component={Link} to="/">
+        <UnstyledButton component={Link} to="/dashboard">
           <Group spacing={0}>
             <ReactSvg className="w-12 h-auto" />
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
