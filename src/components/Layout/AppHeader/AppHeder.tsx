@@ -12,7 +12,7 @@ import {
   useMantineTheme
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
-import { ReactComponent as ReactSvg } from '@/assets/images/react.svg'
+import { ReactComponent as React } from '@/assets/images/react.svg'
 import {
   TextDirectionLtr,
   TextDirectionRtl,
@@ -60,10 +60,10 @@ const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
         </MediaQuery>
         <UnstyledButton component={Link} to="/dashboard">
           <Group spacing={0}>
-            <ReactSvg className={classes.logo} />
+            <React className={classes.logo} />
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
               <Title order={1} className={classes.title}>
-                React Admin
+                React Admin System
               </Title>
             </MediaQuery>
           </Group>

@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom'
 import { Suspense, lazy, ReactNode } from 'react'
 import Nprogress from './components/Nprogress'
-import Home from './views/Home'
+import Home from './views/Home/Home'
 
 /**
  * Get lazy component
@@ -128,7 +128,6 @@ const routes: RouteWithMeta[] = [
       }
     ]
   },
-  { path: 'about', element: getLazyComponent('About') },
   { path: '*', element: getLazyComponent('Error/Error') }
 ]
 
