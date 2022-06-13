@@ -32,7 +32,7 @@ import { MarkGithubIcon } from '@primer/octicons-react'
 import SearchControl from './SearchControl'
 import HeaderControl from './HeaderControl'
 import useBoolean from '@/hooks/useBoolean'
-import { useDirectionContext } from '../DirectionContext'
+import { useDirectionContext } from '@/contexts/DirectionContext'
 import useStyles from './AppHeder.styles'
 
 interface AppHeaderProps {
