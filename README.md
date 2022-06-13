@@ -1,5 +1,7 @@
 # Mantine-collapse-issue Branch
 
+This branch is for https://github.com/mantinedev/mantine/issues/1622
+
 ## How to use this branch?
 
 1. Clone this
