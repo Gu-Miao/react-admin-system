@@ -33,6 +33,7 @@ import SearchControl from './SearchControl'
 import HeaderControl from './HeaderControl'
 import useBoolean from '@/hooks/useBoolean'
 import { useDirectionContext } from '../DirectionContext'
+import useStyles from './AppHeder.styles'
 
 interface AppHeaderProps {
   opened: boolean
@@ -43,6 +44,7 @@ const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
   const theme = useMantineTheme()
   const [enableDarkMode, toggleEnableDarkMode] = useBoolean(false)
   const { dir, toggleDirection } = useDirectionContext()
+  const { classes } = useStyles()
 
   return (
     <Header height={60} p="sm">
@@ -58,9 +60,9 @@ const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
         </MediaQuery>
         <UnstyledButton component={Link} to="/dashboard">
           <Group spacing={0}>
-            <ReactSvg className="w-12 h-auto" />
+            <ReactSvg className={classes.logo} />
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-              <Title order={1} className="text-2xl leading-snug">
+              <Title order={1} className={classes.title}>
                 React Admin
               </Title>
             </MediaQuery>

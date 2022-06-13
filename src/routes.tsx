@@ -129,7 +129,7 @@ const routes: RouteWithMeta[] = [
     ]
   },
   { path: 'about', element: getLazyComponent('About') },
-  { path: '*', element: getLazyComponent('Error') }
+  { path: '*', element: getLazyComponent('Error/Error') }
 ]
 
 export default routes
