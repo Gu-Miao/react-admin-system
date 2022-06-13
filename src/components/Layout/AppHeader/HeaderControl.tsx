@@ -1,5 +1,5 @@
 import { memo, forwardRef, ComponentPropsWithoutRef } from 'react'
-import { UnstyledButton, Tooltip } from '@mantine/core'
+import { UnstyledButton, Tooltip, Anchor } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import useStyles from './HeaderControl.styles'
 
@@ -23,7 +23,7 @@ const HeaderControl = forwardRef<HTMLDivElement, HeaderControlProps>(
           transition="fade"
           openDelay={300}
         >
-          <a
+          <Anchor
             className={classes.control}
             href={link}
             target="_blank"
@@ -31,7 +31,7 @@ const HeaderControl = forwardRef<HTMLDivElement, HeaderControlProps>(
             {...(others as any)}
           >
             {others.children}
-          </a>
+          </Anchor>
         </Tooltip>
       )
     }

@@ -1,10 +1,10 @@
-import { AppShell, Footer, Center, Text, MantineProvider } from '@mantine/core'
+import { AppShell, Footer, Center, Text, MantineProvider, Anchor } from '@mantine/core'
 import { Outlet } from 'react-router-dom'
 import AppHeader from './AppHeader/AppHeder'
 import AppNavbar from './AppNavbar/AppNavbar'
-import useBoolean from '@/hooks/useBoolean'
 import { DirectionContext, DirectionContextProps } from './DirectionContext'
 import { useToggle } from '@mantine/hooks'
+import useBoolean from '@/hooks/useBoolean'
 import rtlPlugin from 'stylis-plugin-rtl'
 
 function AppFooter() {
@@ -13,15 +13,9 @@ function AppFooter() {
       <Center>
         <Text>
           Made by{' '}
-          <Text
-            variant="link"
-            component="a"
-            href="https://github.com/Gu-Miao"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Anchor href="https://github.com/Gu-Miao" target="_blank" rel="noreferrer">
             Gu Miao
-          </Text>
+          </Anchor>
         </Text>
       </Center>
     </Footer>
