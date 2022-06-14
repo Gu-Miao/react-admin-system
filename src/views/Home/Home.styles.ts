@@ -2,9 +2,10 @@ import { createStyles } from '@mantine/core'
 
 export default createStyles(() => ({
   title: {
-    fontSize: 72
+    width: '100%',
+    height: 'auto'
   },
-  gradient: {
-    fontSize: 'inherit'
+  container: {
+    paddingTop: 180
   }
 }))
