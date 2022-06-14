@@ -28,7 +28,7 @@ function HomeHeader() {
         </UnstyledButton>
         <Group spacing="sm">
           <SearchControl />
-          <HeaderControl tooltip="Github" link="https://github.com/Gu-Miao/react-admin-system">
+          <HeaderControl tooltip="Github" link="https://github.com/Gu-Miao/react-admin">
             <MarkGithubIcon size={20} />
           </HeaderControl>
           <Menu
