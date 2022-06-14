@@ -70,7 +70,7 @@ const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
         </UnstyledButton>
         <Group spacing="sm">
           <SearchControl />
-          <HeaderControl tooltip="Github" link="https://github.com/Gu-Miao/react-admin">
+          <HeaderControl tooltip="Github" link="https://github.com/Gu-Miao/react-admin-system">
             <MarkGithubIcon size={20} />
           </HeaderControl>
           <Menu

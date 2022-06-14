@@ -1,10 +1,10 @@
 {
-  "name": "react-admin",
+  "name": "react-admin-system",
   "version": "0.1.0",
   "description": "A fully featured admin system built by react",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gu-Miao/react-admin.git"
+    "url": "git+https://github.com/Gu-Miao/react-admin-system.git"
   },
   "keywords": [
     "react",
