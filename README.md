@@ -6,11 +6,12 @@
 - [x] Customize webpack config
 - [x] CSS in JS
 - [x] Typescript
-- [x] Material UI
+- [x] Mantine UI libarary
 - [x] Redux
 - [x] Eslint, prettier
 - [x] husky, lint-staged
-- [x] Configurable router
+- [x] Configurable routes
+- [x] Lazy route
 - [x] Routes based nav
 - [ ] Cached router
 - [ ] PWA
