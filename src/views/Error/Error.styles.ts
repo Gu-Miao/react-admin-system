@@ -1,17 +1,15 @@
 import { createStyles } from '@mantine/core'
 
 export default createStyles(() => ({
-  error: {
-    width: '100%',
+  container: {
     height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: '#e9e9e9'
+    textAlign: 'center',
+    background: '#e9e9e9',
+    padding: '20vh 30px'
   },
   banner: {
-    width: 500,
+    width: '100%',
+    maxWidth: 500,
     height: 'auto',
     marginBottom: 50
   },
