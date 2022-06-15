@@ -16,7 +16,7 @@ function HomeHeader() {
   return (
     <Header height={60} p="sm">
       <Group spacing={0} position="apart">
-        <UnstyledButton component={Link} to="/dashboard">
+        <UnstyledButton component={Link} to="/">
           <Group spacing={0}>
             <React className={classes.logo} />
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>

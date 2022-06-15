@@ -1,12 +1,4 @@
-import {
-  AppShell,
-  ScrollArea,
-  Container,
-  Text,
-  Group,
-  Button,
-  useMantineTheme
-} from '@mantine/core'
+import { AppShell, Container, Text, Group, Button, useMantineTheme } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import HomeHeader from './HomeHeader'
 import { ReactComponent as TitleBanner } from '@/assets/images/title-banner.svg'
@@ -17,7 +9,6 @@ import useStyles from './Home.styles'
 function Home() {
   const { classes, cx } = useStyles()
   const theme = useMantineTheme()
-  console.log(theme)
 
   return (
     <AppShell header={<HomeHeader />} styles={{ main: { padding: 0 } }}>
@@ -29,7 +20,7 @@ function Home() {
         <Group className={classes.controls}>
           <Button
             component={Link}
-            to="/getting-started/"
+            to="/login"
             size="xl"
             radius="md"
             className={cx(classes.control, classes.controlPrimary)}
@@ -37,7 +28,6 @@ function Home() {
           >
             Get started
           </Button>
-
           <Button
             component="a"
             href="https://github.com/Gu-Miao/react-admin-system"

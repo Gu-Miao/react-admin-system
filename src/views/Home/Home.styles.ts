@@ -30,21 +30,17 @@ export default createStyles(theme => {
         }
       }
     },
-
     controls: {
       marginTop: theme.spacing.xl * 1.5,
-
       [breakPointLg]: {
         marginTop: theme.spacing.xl
       }
     },
-
     control: {
       height: 64,
       paddingLeft: 46,
       paddingRight: 46,
       fontSize: 22,
-
       [breakPointLg]: {
         height: 54,
         paddingLeft: 18,
@@ -52,14 +48,12 @@ export default createStyles(theme => {
         flex: 1
       }
     },
-
     controlPrimary: {
       border: 0,
       backgroundImage: `linear-gradient(52deg, ${
         theme.colors.blue[theme.colorScheme === 'dark' ? 5 : 7]
       } 3%, ${theme.colors.cyan[theme.colorScheme === 'dark' ? 4 : 5]} 97%)`
     },
-
     githubControl: {
       borderWidth: 2,
       borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.dark[9],
