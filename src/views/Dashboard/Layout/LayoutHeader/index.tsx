@@ -29,18 +29,18 @@ import {
   Logout
 } from 'tabler-icons-react'
 import { MarkGithubIcon } from '@primer/octicons-react'
-import SearchControl from './SearchControl'
-import HeaderControl from './HeaderControl'
+import SearchControl from '@/components/SearchControl'
+import HeaderControl from '@/components/HeaderControl'
 import useBoolean from '@/hooks/useBoolean'
 import { useDirectionContext } from '@/contexts/DirectionContext'
-import useStyles from './AppHeder.styles'
+import useStyles from './index.styles'
 
-interface AppHeaderProps {
+interface LayoutHeaderProps {
   opened: boolean
   onOpenedChange: MouseEventHandler<HTMLButtonElement>
 }
 
-const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
+const LayoutHeader: FC<LayoutHeaderProps> = ({ opened, onOpenedChange }) => {
   const theme = useMantineTheme()
   const [enableDarkMode, toggleEnableDarkMode] = useBoolean(false)
   const { dir, toggleDirection } = useDirectionContext()
@@ -125,4 +125,4 @@ const AppHeader: FC<AppHeaderProps> = ({ opened, onOpenedChange }) => {
   )
 }
 
-export default memo(AppHeader)
+export default memo(LayoutHeader)

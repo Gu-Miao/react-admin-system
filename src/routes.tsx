@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom'
 import { Suspense, lazy, ReactNode } from 'react'
 import Nprogress from './components/Nprogress'
-import Home from './views/Home/Home'
+import Home from './views/Home'
 
 /**
  * Get lazy component
@@ -33,7 +33,7 @@ const routes: RouteWithMeta[] = [
   },
   {
     path: 'dashboard',
-    element: getLazyComponent('Layout/Layout', 'components'),
+    element: getLazyComponent('Dashboard/Layout'),
     children: [
       {
         index: true,
@@ -128,7 +128,7 @@ const routes: RouteWithMeta[] = [
       }
     ]
   },
-  { path: '*', element: getLazyComponent('Error/Error') }
+  { path: '*', element: getLazyComponent('Error') }
 ]
 
 export default routes

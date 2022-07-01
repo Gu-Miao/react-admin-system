@@ -1,7 +1,7 @@
 import { AppShell, Footer, Center, Text, Anchor } from '@mantine/core'
 import { Outlet } from 'react-router-dom'
-import AppHeader from './AppHeader/AppHeder'
-import AppNavbar from './AppNavbar/AppNavbar'
+import LayoutHeader from './LayoutHeader'
+import LayoutNavbar from './LayoutNavbar'
 import useBoolean from '@/hooks/useBoolean'
 
 function AppFooter() {
@@ -25,8 +25,8 @@ function AppLayout() {
   return (
     <AppShell
       fixed
-      header={<AppHeader opened={opened} onOpenedChange={() => toggleOpened()} />}
-      navbar={<AppNavbar hidden={!opened} />}
+      header={<LayoutHeader opened={opened} onOpenedChange={() => toggleOpened()} />}
+      navbar={<LayoutNavbar hidden={!opened} />}
       footer={<AppFooter />}
     >
       <Outlet />

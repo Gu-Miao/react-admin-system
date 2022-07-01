@@ -4,7 +4,7 @@ import HomeHeader from './HomeHeader'
 import { ReactComponent as TitleBanner } from '@/assets/images/title-banner.svg'
 import { MarkGithubIcon } from '@primer/octicons-react'
 import { ReactComponent as Wave } from '@/assets/images/wave.svg'
-import useStyles from './Home.styles'
+import useStyles from './index.styles'
 
 function Home() {
   const { classes, cx } = useStyles()

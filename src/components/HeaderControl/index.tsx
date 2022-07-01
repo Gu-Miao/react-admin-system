@@ -1,7 +1,7 @@
 import { memo, forwardRef, ComponentPropsWithoutRef } from 'react'
 import { UnstyledButton, Tooltip, Anchor } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
-import useStyles from './HeaderControl.styles'
+import useStyles from './index.styles'
 
 interface HeaderControlProps extends ComponentPropsWithoutRef<'button'> {
   tooltip: string
