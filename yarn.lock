@@ -2176,6 +2176,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/form@npm:^4.2.11":
+  version: 4.2.11
+  resolution: "@mantine/form@npm:4.2.11"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: e766c89494fa5c07c08fb3b2654941ee56184a9e26bf4ee3ea06bf582e52e1983012cec932fe681255ed039d27517b12050b89582881123e731b9b43f7ba8046
+  languageName: node
+  linkType: hard
+
 "@mantine/hooks@npm:^4.2.11":
   version: 4.2.11
   resolution: "@mantine/hooks@npm:4.2.11"
@@ -10840,6 +10849,7 @@ __metadata:
   resolution: "react-admin-system@workspace:."
   dependencies:
     "@mantine/core": ^4.2.11
+    "@mantine/form": ^4.2.11
     "@mantine/hooks": ^4.2.11
     "@mantine/spotlight": ^4.2.11
     "@primer/octicons-react": ^17.3.0

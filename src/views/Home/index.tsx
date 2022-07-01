@@ -20,7 +20,7 @@ function Home() {
         <Group className={classes.controls}>
           <Button
             component={Link}
-            to="/login"
+            to="auth/login"
             size="xl"
             radius="md"
             className={cx(classes.control, classes.controlPrimary)}

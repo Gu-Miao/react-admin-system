@@ -32,6 +32,20 @@ const routes: RouteWithMeta[] = [
     element: <Home />
   },
   {
+    path: 'auth',
+    element: getLazyComponent('Auth/Layout'),
+    children: [
+      {
+        path: 'login',
+        element: getLazyComponent('Auth/Login')
+      },
+      {
+        path: 'forget-password',
+        element: getLazyComponent('Auth/ForgetPassword')
+      }
+    ]
+  },
+  {
     path: 'dashboard',
     element: getLazyComponent('Dashboard/Layout'),
     children: [
@@ -41,13 +55,42 @@ const routes: RouteWithMeta[] = [
         element: getLazyComponent('Dashboard/Overview')
       },
       {
+        path: 'users',
+        meta: { title: 'Users' },
+        element: getLazyComponent('Dashboard/Overview')
+      },
+      {
+        path: 'roles',
+        meta: { title: 'Roles' },
+        element: getLazyComponent('Dashboard/Overview')
+      },
+      {
+        path: 'organization',
+        meta: { title: 'Organization' },
+        element: getLazyComponent('Dashboard/Overview')
+      },
+      {
+        path: 'modules',
+        meta: { title: 'Modules' },
+        element: getLazyComponent('Dashboard/Overview')
+      },
+      {
+        path: 'data-dictionary',
+        meta: { title: 'Data Dictionary' },
+        element: getLazyComponent('Dashboard/Overview')
+      },
+      {
         path: 'data',
         meta: { title: 'Data' },
-        element: getLazyComponent('Dashboard/Overview'),
         children: [
           {
+            path: 'overview',
+            meta: { title: 'Overview' },
+            element: getLazyComponent('Dashboard/Overview')
+          },
+          {
             path: 'map-tiles',
-            meta: { title: 'Map tiles' },
+            meta: { title: 'Map Tiles' },
             element: getLazyComponent('Dashboard/Overview')
           },
           {
@@ -67,8 +110,7 @@ const routes: RouteWithMeta[] = [
           },
           {
             path: '3d-tiles',
-            meta: { title: '3D tiles' },
-            element: getLazyComponent('Dashboard/Overview'),
+            meta: { title: '3D Tiles' },
             children: [
               {
                 path: 'buildings',
@@ -95,35 +137,8 @@ const routes: RouteWithMeta[] = [
         ]
       },
       {
-        path: 'test',
-        meta: { title: 'Test' },
-        element: getLazyComponent('Dashboard/Overview'),
-        children: [
-          {
-            path: 'test-examples',
-            meta: { title: 'Test examples' },
-            element: getLazyComponent('Dashboard/Overview')
-          },
-          {
-            path: 'tasks',
-            meta: { title: 'Tasks' },
-            element: getLazyComponent('Dashboard/Overview')
-          }
-        ]
-      },
-      {
-        path: 'access-tokens',
-        meta: { title: 'Access Tokens' },
-        element: getLazyComponent('Dashboard/Overview')
-      },
-      {
-        path: 'document',
-        meta: { title: 'Document' },
-        element: getLazyComponent('Dashboard/Overview')
-      },
-      {
-        path: 'blogs',
-        meta: { title: 'Blogs' },
+        path: 'records',
+        meta: { title: 'Records' },
         element: getLazyComponent('Dashboard/Overview')
       }
     ]
