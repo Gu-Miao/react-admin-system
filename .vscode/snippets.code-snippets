@@ -24,5 +24,21 @@
     "scope": "typescriptreact",
     "prefix": "useConstSnippet",
     "body": "const ${1:first} = useConst(${2:second})"
+  },
+  "useStyles": {
+    "scope": "typescriptreact",
+    "prefix": "useStylesSnippet",
+    "body": "const {$0} = useStyles(${1:first})"
+  },
+  "createStyles": {
+    "scope": "typescript",
+    "prefix": "createStylesSnippet",
+    "body": [
+      "import { createStyles } from '@mantine/core'",
+      "",
+      "export default createStyles(($1) => ({",
+      "  $0",
+      "}))"
+    ]
   }
 }
