@@ -9,8 +9,10 @@ import {
   Divider,
   MediaQuery,
   Burger,
+  Text,
   useMantineTheme
 } from '@mantine/core'
+import { useModals } from '@mantine/modals'
 import { Link } from 'react-router-dom'
 import { ReactComponent as React } from '@/assets/images/react.svg'
 import {
@@ -31,9 +33,12 @@ import {
 import { MarkGithubIcon } from '@primer/octicons-react'
 import SearchControl from '@/components/SearchControl'
 import HeaderControl from '@/components/HeaderControl'
-import useBoolean from '@/hooks/useBoolean'
 import { useDirectionContext } from '@/contexts/DirectionContext'
+import { useDispatch } from 'react-redux'
+import useBoolean from '@/hooks/useBoolean'
 import useStyles from './index.styles'
+import { setUserInfo } from '@/store/user'
+import forage from '@/utils/forage'
 
 interface LayoutHeaderProps {
   opened: boolean
@@ -41,10 +46,27 @@ interface LayoutHeaderProps {
 }
 
 const LayoutHeader: FC<LayoutHeaderProps> = ({ opened, onOpenedChange }) => {
+  const modals = useModals()
+  const dispatch = useDispatch()
   const theme = useMantineTheme()
   const [enableDarkMode, toggleEnableDarkMode] = useBoolean(false)
   const { dir, toggleDirection } = useDirectionContext()
   const { classes } = useStyles()
+
+  function handleLogOutClick() {
+    modals.openConfirmModal({
+      title: <Text size="xl">Confirm log out?</Text>,
+      confirmProps: { color: 'red' },
+      labels: {
+        confirm: 'Yes, quit now',
+        cancel: 'Wait, later'
+      },
+      onConfirm() {
+        dispatch(setUserInfo())
+        forage.removeItem('user')
+      }
+    })
+  }
 
   return (
     <Header height={60} p="sm">
@@ -115,7 +137,7 @@ const LayoutHeader: FC<LayoutHeaderProps> = ({ opened, onOpenedChange }) => {
             <Menu.Item icon={<Settings size={16} />}>Settings</Menu.Item>
             <Menu.Item icon={<InfoCircle size={16} />}>About</Menu.Item>
             <Divider />
-            <Menu.Item color="red" icon={<Logout size={16} />}>
+            <Menu.Item color="red" icon={<Logout size={16} />} onClick={handleLogOutClick}>
               Log out
             </Menu.Item>
           </Menu>
