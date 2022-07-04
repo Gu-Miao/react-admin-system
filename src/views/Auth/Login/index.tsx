@@ -10,7 +10,6 @@ import {
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import { ReactComponent as React } from '@/assets/images/react.svg'
-import { ReactComponent as Dot1 } from '@/assets/images/dot-1.svg'
 import { useForm } from '@mantine/form'
 import useStyles from './index.styles'
 
@@ -26,7 +25,6 @@ function Login() {
 
   return (
     <div>
-      <Dot1 className={classes.dot1} />
       <Group className={classes.titleContainer} spacing={0} position="center">
         <React className={classes.logo} />
         <Title className={classes.title} order={1}>
