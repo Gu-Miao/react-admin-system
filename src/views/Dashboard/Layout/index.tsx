@@ -1,13 +1,12 @@
 import { AppShell, Footer, Center, Text, Anchor } from '@mantine/core'
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import LayoutHeader from './LayoutHeader'
 import LayoutNavbar from './LayoutNavbar'
 import { useSelector } from 'react-redux'
 import useBoolean from '@/hooks/useBoolean'
-import useNavigateHome from '@/hooks/useNavigateHome'
 import { selectUser } from '@/store/user'
 
-function AppFooter() {
+function LayoutFooter() {
   return (
     <Footer height={60} p="md">
       <Center>
@@ -24,15 +23,20 @@ function AppFooter() {
 
 function AppLayout() {
   const user = useSelector(selectUser)
-  useNavigateHome(!user.id)
   const [opened, toggleOpened] = useBoolean(false)
 
+  if (user.initializing) {
+    return null
+  }
+  if (!user.id) {
+    return <Navigate to="/auth/login" replace />
+  }
   return (
     <AppShell
       fixed
       header={<LayoutHeader opened={opened} onOpenedChange={() => toggleOpened()} />}
       navbar={<LayoutNavbar hidden={!opened} />}
-      footer={<AppFooter />}
+      footer={<LayoutFooter />}
     >
       <Outlet />
     </AppShell>
