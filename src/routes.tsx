@@ -29,7 +29,7 @@ export interface RouteWithMeta extends RouteObject {
 const routes: RouteWithMeta[] = [
   {
     path: '/',
-    element: <Home />
+    element: <Home />,
   },
   {
     path: 'auth',
@@ -37,13 +37,13 @@ const routes: RouteWithMeta[] = [
     children: [
       {
         path: 'login',
-        element: getLazyComponent('Auth/Login')
+        element: getLazyComponent('Auth/Login'),
       },
       {
         path: 'forget-password',
-        element: getLazyComponent('Auth/ForgetPassword')
-      }
-    ]
+        element: getLazyComponent('Auth/ForgetPassword'),
+      },
+    ],
   },
   {
     path: 'dashboard',
@@ -52,32 +52,32 @@ const routes: RouteWithMeta[] = [
       {
         index: true,
         meta: { title: 'Overview' },
-        element: getLazyComponent('Dashboard/Overview')
+        element: getLazyComponent('Dashboard/Overview'),
       },
       {
         path: 'users',
         meta: { title: 'Users' },
-        element: getLazyComponent('Dashboard/Overview')
+        element: getLazyComponent('Dashboard/Overview'),
       },
       {
         path: 'roles',
         meta: { title: 'Roles' },
-        element: getLazyComponent('Dashboard/Overview')
+        element: getLazyComponent('Dashboard/Overview'),
       },
       {
         path: 'organization',
         meta: { title: 'Organization' },
-        element: getLazyComponent('Dashboard/Overview')
+        element: getLazyComponent('Dashboard/Overview'),
       },
       {
         path: 'modules',
         meta: { title: 'Modules' },
-        element: getLazyComponent('Dashboard/Overview')
+        element: getLazyComponent('Dashboard/Overview'),
       },
       {
         path: 'data-dictionary',
         meta: { title: 'Data Dictionary' },
-        element: getLazyComponent('Dashboard/Overview')
+        element: getLazyComponent('Dashboard/Overview'),
       },
       {
         path: 'data',
@@ -86,27 +86,27 @@ const routes: RouteWithMeta[] = [
           {
             path: 'overview',
             meta: { title: 'Overview' },
-            element: getLazyComponent('Dashboard/Overview')
+            element: getLazyComponent('Dashboard/Overview'),
           },
           {
             path: 'map-tiles',
             meta: { title: 'Map Tiles' },
-            element: getLazyComponent('Dashboard/Overview')
+            element: getLazyComponent('Dashboard/Overview'),
           },
           {
             path: 'terrain',
             meta: { title: 'Terrain' },
-            element: getLazyComponent('Dashboard/Overview')
+            element: getLazyComponent('Dashboard/Overview'),
           },
           {
             path: 'labels',
             meta: { title: 'Labels' },
-            element: getLazyComponent('Dashboard/Overview')
+            element: getLazyComponent('Dashboard/Overview'),
           },
           {
             path: 'models',
             meta: { title: 'Models' },
-            element: getLazyComponent('Dashboard/Overview')
+            element: getLazyComponent('Dashboard/Overview'),
           },
           {
             path: '3d-tiles',
@@ -115,35 +115,35 @@ const routes: RouteWithMeta[] = [
               {
                 path: 'buildings',
                 meta: { title: 'Buildings' },
-                element: getLazyComponent('Dashboard/Overview')
+                element: getLazyComponent('Dashboard/Overview'),
               },
               {
                 path: 'trees',
                 meta: { title: 'Trees' },
-                element: getLazyComponent('Dashboard/Overview')
+                element: getLazyComponent('Dashboard/Overview'),
               },
               {
                 path: 'highways',
                 meta: { title: 'Highways' },
-                element: getLazyComponent('Dashboard/Overview')
-              }
-            ]
+                element: getLazyComponent('Dashboard/Overview'),
+              },
+            ],
           },
           {
             path: 'materials',
             meta: { title: 'Materials' },
-            element: getLazyComponent('Dashboard/Overview')
-          }
-        ]
+            element: getLazyComponent('Dashboard/Overview'),
+          },
+        ],
       },
       {
         path: 'records',
         meta: { title: 'Records' },
-        element: getLazyComponent('Dashboard/Overview')
-      }
-    ]
+        element: getLazyComponent('Dashboard/Overview'),
+      },
+    ],
   },
-  { path: '*', element: getLazyComponent('Error') }
+  { path: '*', element: getLazyComponent('Error') },
 ]
 
 export default routes

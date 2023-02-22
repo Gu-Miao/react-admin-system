@@ -4,7 +4,7 @@ type MessageOption = Omit<NotificationProps, 'message'>
 
 const defaultStyles = {
   title: { fontSize: 22 },
-  description: { fontSize: 16 }
+  description: { fontSize: 16 },
 }
 
 function info(message: string, option?: MessageOption) {
@@ -12,7 +12,7 @@ function info(message: string, option?: MessageOption) {
     title: 'INFO',
     message,
     styles: defaultStyles,
-    ...option
+    ...option,
   })
 }
 
@@ -22,7 +22,7 @@ function warning(message: string, option?: MessageOption) {
     message,
     color: 'yellow',
     styles: defaultStyles,
-    ...option
+    ...option,
   })
 }
 
@@ -32,7 +32,7 @@ function success(message: string, option?: MessageOption) {
     message,
     color: 'green',
     styles: defaultStyles,
-    ...option
+    ...option,
   })
 }
 
@@ -42,7 +42,7 @@ function error(message: string, option?: MessageOption) {
     message,
     color: 'red',
     styles: defaultStyles,
-    ...option
+    ...option,
   })
 }
 
@@ -50,7 +50,7 @@ const message = {
   info,
   warning,
   success,
-  error
+  error,
 }
 
 export default message

@@ -9,7 +9,7 @@ export default createStyles(() => ({
     background: '#eee',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   box: {
     marginTop: -100,
@@ -19,13 +19,13 @@ export default createStyles(() => ({
     background: 'white',
     borderRadius: 6,
     overflow: 'hidden',
-    boxShadow: 'rgb(58 53 65 / 10%) 0px 2px 10px 0px'
+    boxShadow: 'rgb(58 53 65 / 10%) 0px 2px 10px 0px',
   },
   wave: {
     position: 'fixed',
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: -1
-  }
+    zIndex: -1,
+  },
 }))

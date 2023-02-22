@@ -5,7 +5,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
  * @param config config of request
  */
 export default async function request(
-  config: AxiosRequestConfig
+  config: AxiosRequestConfig,
 ): Promise<[any] | [null, AxiosResponse]> {
   try {
     const res = await axios(config)

@@ -10,7 +10,7 @@ import {
   MediaQuery,
   Burger,
   Text,
-  useMantineTheme
+  useMantineTheme,
 } from '@mantine/core'
 import { useModals } from '@mantine/modals'
 import { Link } from 'react-router-dom'
@@ -28,7 +28,7 @@ import {
   History,
   Settings,
   InfoCircle,
-  Logout
+  Logout,
 } from 'tabler-icons-react'
 import { MarkGithubIcon } from '@primer/octicons-react'
 import SearchControl from '@/components/SearchControl'
@@ -59,12 +59,12 @@ const LayoutHeader: FC<LayoutHeaderProps> = ({ opened, onOpenedChange }) => {
       confirmProps: { color: 'red' },
       labels: {
         confirm: 'Yes, quit now',
-        cancel: 'Wait, later'
+        cancel: 'Wait, later',
       },
       onConfirm() {
         dispatch(setUserInfo())
         forage.removeItem('user')
-      }
+      },
     })
   }
 

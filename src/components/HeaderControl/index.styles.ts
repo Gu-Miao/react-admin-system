@@ -15,10 +15,10 @@ export default createStyles(theme => ({
     color: theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[7],
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.white,
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[0]
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[0],
     },
     [theme.fn.smallerThan('sm')]: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 }))

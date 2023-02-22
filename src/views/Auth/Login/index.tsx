@@ -6,7 +6,7 @@ import {
   TextInput,
   PasswordInput,
   Checkbox,
-  Button
+  Button,
 } from '@mantine/core'
 import { Link, useNavigate } from 'react-router-dom'
 import { ReactComponent as React } from '@/assets/images/react.svg'
@@ -30,7 +30,7 @@ function Login() {
     initialValues: {
       username: DEMO_USERNAME,
       password: DEMO_PASSWORD,
-      remember: false
+      remember: false,
     },
     validate: {
       username(value) {
@@ -42,8 +42,8 @@ function Login() {
       password(value) {
         if (/[0-9a-zA-Z]{6,16}/.test(value)) return null
         return 'Please input valid password'
-      }
-    }
+      },
+    },
   })
   const [submitting, toggleSubmitting] = useBoolean(false)
 

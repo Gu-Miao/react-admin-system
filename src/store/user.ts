@@ -35,7 +35,7 @@ const slice = createSlice({
       state.username = payload.username
       state.id = payload.id
       state.roles = payload.roles
-    }
+    },
   },
   extraReducers(builder) {
     builder
@@ -45,7 +45,7 @@ const slice = createSlice({
       .addCase(initUserInfo.fulfilled, state => {
         state.initializing = false
       })
-  }
+  },
 })
 
 export const { setUserInfo } = slice.actions

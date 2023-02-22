@@ -3,8 +3,8 @@ import user, { initUserInfo } from './user'
 
 const store = configureStore({
   reducer: {
-    user
-  }
+    user,
+  },
 })
 
 store.dispatch(initUserInfo())

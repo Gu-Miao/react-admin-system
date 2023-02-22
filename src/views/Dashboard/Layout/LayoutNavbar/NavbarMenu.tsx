@@ -13,7 +13,7 @@ const MenuList: FC<PropsWithChildren> = ({ children }) => {
 const MenuItem: FC<PropsWithChildren<{ to: LinkProps['to']; active?: boolean }>> = ({
   to,
   children,
-  active = false
+  active = false,
 }) => {
   const { classes, cx } = useStyles()
   return (
@@ -29,7 +29,7 @@ function NavbarMenu() {
   const location = useLocation()
   const [, ...matchedRoutes] = matchRoutes(routes, location, process.env.PUBLIC_URL) as RouteMatch[]
   const topLevelRoutes = useConst(
-    routes.find(route => route.path === 'dashboard')?.children as RouteWithMeta[]
+    routes.find(route => route.path === 'dashboard')?.children as RouteWithMeta[],
   )
   return (
     <MenuList>

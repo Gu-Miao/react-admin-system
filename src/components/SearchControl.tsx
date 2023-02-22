@@ -27,12 +27,12 @@ function SearchControl(props: React.ComponentPropsWithoutRef<'button'>) {
           backgroundColor:
             theme.colorScheme === 'dark'
               ? theme.fn.rgba(theme.colors.dark[5], 0.85)
-              : theme.fn.rgba(theme.colors.gray[0], 0.35)
+              : theme.fn.rgba(theme.colors.gray[0], 0.35),
         },
 
         [theme.fn.smallerThan('sm')]: {
-          display: 'none'
-        }
+          display: 'none',
+        },
       })}
     >
       <Group spacing="xs">
@@ -52,7 +52,7 @@ function SearchControl(props: React.ComponentPropsWithoutRef<'button'>) {
               theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[2]
             }`,
             backgroundColor:
-              theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
+              theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
           })}
         >
           {os === 'undetermined' || os === 'macos' ? '⌘' : 'Ctrl'} + K

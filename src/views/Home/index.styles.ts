@@ -5,15 +5,15 @@ export default createStyles(theme => {
 
   return {
     scroll: {
-      height: 'calc(100vh - 60px)'
+      height: 'calc(100vh - 60px)',
     },
     container: {
-      paddingTop: 180
+      paddingTop: 180,
     },
     title: {
       width: '100%',
       height: 'auto',
-      marginBottom: 32
+      marginBottom: 32,
     },
     description: {
       fontSize: 28,
@@ -21,20 +21,20 @@ export default createStyles(theme => {
       marginBottom: 30,
       [breakPointLg]: {
         '&': {
-          fontSize: 22
-        }
+          fontSize: 22,
+        },
       },
       [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
         '&': {
-          fontSize: 18
-        }
-      }
+          fontSize: 18,
+        },
+      },
     },
     controls: {
       marginTop: theme.spacing.xl * 1.5,
       [breakPointLg]: {
-        marginTop: theme.spacing.xl
-      }
+        marginTop: theme.spacing.xl,
+      },
     },
     control: {
       height: 64,
@@ -45,14 +45,14 @@ export default createStyles(theme => {
         height: 54,
         paddingLeft: 18,
         paddingRight: 18,
-        flex: 1
-      }
+        flex: 1,
+      },
     },
     controlPrimary: {
       border: 0,
       backgroundImage: `linear-gradient(52deg, ${
         theme.colors.blue[theme.colorScheme === 'dark' ? 5 : 7]
-      } 3%, ${theme.colors.cyan[theme.colorScheme === 'dark' ? 4 : 5]} 97%)`
+      } 3%, ${theme.colors.cyan[theme.colorScheme === 'dark' ? 4 : 5]} 97%)`,
     },
     githubControl: {
       borderWidth: 2,
@@ -62,8 +62,8 @@ export default createStyles(theme => {
       '&:hover': {
         backgroundColor: `${
           theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0]
-        } !important`
-      }
+        } !important`,
+      },
     },
     wave: {
       position: 'absolute',
@@ -71,7 +71,7 @@ export default createStyles(theme => {
       left: 0,
       width: '100%',
       height: 'auto',
-      zIndex: -1
-    }
+      zIndex: -1,
+    },
   }
 })

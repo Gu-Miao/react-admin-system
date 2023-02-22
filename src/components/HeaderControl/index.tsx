@@ -48,7 +48,7 @@ const HeaderControl = forwardRef<HTMLDivElement, HeaderControlProps>(
         <UnstyledButton className={classes.control} {...others} />
       </Tooltip>
     )
-  }
+  },
 )
 
 export default memo(HeaderControl)

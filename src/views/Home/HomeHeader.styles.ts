@@ -3,9 +3,9 @@ import { createStyles } from '@mantine/core'
 export default createStyles(() => ({
   logo: {
     width: 50,
-    height: 'auto'
+    height: 'auto',
   },
   title: {
-    fontSize: 24
-  }
+    fontSize: 24,
+  },
 }))
