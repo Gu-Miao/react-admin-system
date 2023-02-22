@@ -28,7 +28,6 @@
     "url": "https://github.com/Gu-Miao/react-admin/issues"
   },
   "homepage": "https://github.com/Gu-Miao/react-admin#readme",
-  "packageManager": "yarn@3.2.1",
   "scripts": {
     "prepare": "husky install",
     "start": "react-app-rewired start",
