@@ -1,14 +1,9 @@
-import { memo, FC } from 'react'
 import { Navbar, ScrollArea } from '@mantine/core'
 import NavbarMenu from './NavbarMenu'
 
-interface LayoutNavbarProps {
-  hidden: boolean
-}
-
-const LayoutNavbar: FC<LayoutNavbarProps> = ({ hidden }) => {
+function LayoutNavbar() {
   return (
-    <Navbar p={0} hiddenBreakpoint="sm" hidden={hidden} width={{ sm: 260, lg: 300 }}>
+    <Navbar p={0} hiddenBreakpoint="sm" width={{ sm: 260, lg: 300 }}>
       <ScrollArea p="xs" scrollbarSize={8}>
         <NavbarMenu />
       </ScrollArea>
@@ -16,4 +11,4 @@ const LayoutNavbar: FC<LayoutNavbarProps> = ({ hidden }) => {
   )
 }
 
-export default memo(LayoutNavbar)
+export default LayoutNavbar

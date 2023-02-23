@@ -5,5 +5,5 @@ import { useToggle } from '@mantine/hooks'
  * @param initialValue Initial value, ture or false
  */
 export default function useBoolean(initialValue: any) {
-  return useToggle<boolean>(Boolean(initialValue), [true, false])
+  return useToggle([!!initialValue, !initialValue])
 }

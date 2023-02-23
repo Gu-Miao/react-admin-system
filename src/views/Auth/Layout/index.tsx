@@ -1,11 +1,11 @@
 import { Outlet, Navigate } from 'react-router-dom'
 import { ReactComponent as Wave } from '@/assets/images/wave-gently.svg'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '@/hooks/useRedux'
 import useStyles from './index.syltes'
 import { selectUser } from '@/store/user'
 
 const Layout = () => {
-  const user = useSelector(selectUser)
+  const user = useAppSelector(selectUser)
   const { classes } = useStyles()
 
   if (user.initializing) {

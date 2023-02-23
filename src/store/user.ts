@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { Store } from '.'
+import { RootState } from '.'
 import { SEVEN_DAYS_MS } from '@/common/constants'
 import forage from '@/utils/forage'
 
@@ -52,4 +52,4 @@ export const { setUserInfo } = slice.actions
 
 export default slice.reducer
 
-export const selectUser = (store: Store) => store.user
+export const selectUser = (store: RootState) => store.user

@@ -12,19 +12,19 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ReactComponent as React } from '@/assets/images/react.svg'
 import { useForm } from '@mantine/form'
 import useBoolean from '@/hooks/useBoolean'
-import useStyles from './index.styles'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from '@/hooks/useRedux'
 import { setUserInfo } from '@/store/user'
 import { sleep } from '@/utils'
 import message from '@/utils/message'
 import forage from '@/utils/forage'
+import useStyles from './index.styles'
 
 const DEMO_USERNAME = 'admin'
 const DEMO_PASSWORD = 'ras123'
 
 function Login() {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { classes } = useStyles()
   const form = useForm({
     initialValues: {

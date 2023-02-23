@@ -1,80 +1,72 @@
-import { FC, PropsWithChildren } from 'react'
-import { Link, LinkProps, matchRoutes, useLocation, RouteMatch } from 'react-router-dom'
-import { List, UnstyledButton } from '@mantine/core'
+import { Link, matchRoutes, useLocation, RouteMatch } from 'react-router-dom'
+import { UnstyledButton } from '@mantine/core'
 import CollapseMenuItem from './CollapseMenuItem'
-import routes, { RouteWithMeta } from '@/routes'
-import useStyles from './NavbarMenu.sytles'
 import useConst from '@/hooks/useConst'
-
-const MenuList: FC<PropsWithChildren> = ({ children }) => {
-  return <List listStyleType="none">{children}</List>
-}
-
-const MenuItem: FC<PropsWithChildren<{ to: LinkProps['to']; active?: boolean }>> = ({
-  to,
-  children,
-  active = false,
-}) => {
-  const { classes, cx } = useStyles()
-  return (
-    <List.Item className={cx(classes.menuItem, active && classes.menuItemActive)}>
-      <UnstyledButton component={Link} to={to}>
-        {children}
-      </UnstyledButton>
-    </List.Item>
-  )
-}
+import router, { routes, RouteData } from '@/router'
+import useStyles from './NavbarMenu.styles'
 
 function NavbarMenu() {
   const location = useLocation()
-  const [, ...matchedRoutes] = matchRoutes(routes, location, process.env.PUBLIC_URL) as RouteMatch[]
+  const [, ...matchedRoutes] = matchRoutes(
+    router.routes,
+    location,
+    process.env.PUBLIC_URL,
+  ) as RouteMatch[]
   const topLevelRoutes = useConst(
-    routes.find(route => route.path === 'dashboard')?.children as RouteWithMeta[],
+    routes.find(route => route.path === 'dashboard')?.children as RouteData[],
   )
+
   return (
-    <MenuList>
+    <ul>
       <MenuItems routes={topLevelRoutes} matchedRoutes={matchedRoutes} />
-    </MenuList>
+    </ul>
   )
 }
 
 interface MenuItemProps {
-  routes: RouteWithMeta[]
+  routes: RouteData[]
   prefix?: string
   matchedRoutes: RouteMatch[]
 }
 
-const MenuItems: FC<MenuItemProps> = ({ routes, prefix = '', matchedRoutes }) => {
+function MenuItems({ routes, prefix = '', matchedRoutes }: MenuItemProps) {
+  const { classes, cx } = useStyles()
   return (
     <>
       {routes.map(route => {
         const path = getPath(route, prefix)
         const [current, ...rest] = matchedRoutes
-        const isMatched = current?.route === route
+        const isMatched = current?.route.path === route.path
 
         if (route.children) {
           return (
-            <List.Item key={path}>
-              <CollapseMenuItem defaultOpened={isMatched} label={route.meta?.title}>
-                <MenuList>
+            <li key={path}>
+              <CollapseMenuItem defaultOpened={isMatched} label={route?.title}>
+                <ul>
                   <MenuItems routes={route.children} prefix={path} matchedRoutes={rest} />
-                </MenuList>
+                </ul>
               </CollapseMenuItem>
-            </List.Item>
+            </li>
           )
         }
 
         return (
-          <MenuItem key={path} to={path} active={isMatched}>
-            {route.meta?.title}
-          </MenuItem>
+          <li key={path}>
+            <UnstyledButton
+              component={Link}
+              to={path}
+              className={cx(classes.menuItem, isMatched && classes.active)}
+            >
+              {route?.title}
+            </UnstyledButton>
+          </li>
         )
       })}
     </>
   )
 }
 
-function getPath(route: RouteWithMeta, prefix: string) {
+function getPath(route: RouteData, prefix: string) {
   if (route.index) return prefix
   if (route.path?.startsWith('/') || prefix === '') return route.path as string
   return prefix.endsWith('/') ? prefix + route.path : `${prefix}/${route.path}`

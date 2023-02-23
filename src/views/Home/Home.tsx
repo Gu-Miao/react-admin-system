@@ -1,17 +1,17 @@
 import { AppShell, Container, Text, Group, Button, useMantineTheme } from '@mantine/core'
 import { Link } from 'react-router-dom'
-import HomeHeader from './HomeHeader'
+import Header from '@/components/Header'
 import { ReactComponent as TitleBanner } from '@/assets/images/title-banner.svg'
 import { MarkGithubIcon } from '@primer/octicons-react'
 import { ReactComponent as Wave } from '@/assets/images/wave.svg'
-import useStyles from './index.styles'
+import useStyles from './Home.styles'
 
 function Home() {
   const { classes, cx } = useStyles()
   const theme = useMantineTheme()
 
   return (
-    <AppShell header={<HomeHeader />} styles={{ main: { padding: 0 } }}>
+    <AppShell header={<Header />} styles={{ main: { padding: 0 } }}>
       <Container size="lg" className={classes.container}>
         <TitleBanner className={classes.title} />
         <Text className={classes.description}>

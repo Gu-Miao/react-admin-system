@@ -4,23 +4,22 @@ export default createStyles((_, __, getRef) => ({
   item: {
     border: 0,
   },
-  itemOpened: {
-    [`&>.${getRef('itemTitle')}>.${getRef('control')}>.${getRef('icon')}`]: {
-      transform: 'rotate(0)',
+  control: {
+    borderRadius: 4,
+    padding: '16px 8px',
+    transition: 'background-color .35s ease-in-out',
+    '&:hover': {
+      backgroundColor: '#e7e8e9',
     },
   },
-  control: {
-    padding: '12px 8px',
-    lineHeight: 'inherit',
-  },
-  label: {
-    fontWeight: 'normal',
-  },
-  icon: {
-    transform: 'rotate(-90deg)',
-  },
-  contentInner: {
+  content: {
     padding: 0,
-    paddingLeft: 8,
+    paddingLeft: 6,
+  },
+  chevron: {
+    transform: 'rotate(-90deg)',
+    '&[data-rotate]': {
+      transform: 'rotate(0deg)',
+    },
   },
 }))
