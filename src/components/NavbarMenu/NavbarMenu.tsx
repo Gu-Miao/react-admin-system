@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react'
+import { useRef, useEffect, MouseEventHandler, MutableRefObject } from 'react'
 import { Link, matchRoutes, useLocation, RouteMatch } from 'react-router-dom'
 import { UnstyledButton } from '@mantine/core'
 import CollapseMenuItem from './CollapseMenuItem'
@@ -31,18 +31,28 @@ function NavbarMenu({ onClick }: NavbarMenuProps) {
 
 interface MenuItemProps {
   routes: RouteData[]
-  prefix?: string
+  base?: string
   matchedRoutes: RouteMatch[]
   onClick?: NavbarMenuProps['onClick']
 }
 
-function MenuItems({ routes, prefix = '', matchedRoutes, onClick }: MenuItemProps) {
+function MenuItems({ routes, base = '', matchedRoutes, onClick }: MenuItemProps) {
   const { classes, cx } = useStyles()
+  const activeRef = useRef<HTMLAnchorElement>()
+
+  useEffect(() => {
+    if (activeRef.current) {
+      // For scrolling to the position of active menu item and don't show the
+      // style of focus
+      activeRef.current.focus()
+      activeRef.current.blur()
+    }
+  }, [])
 
   return (
     <>
       {routes.map(route => {
-        const path = getPath(route, prefix)
+        const path = joinPath(route, base)
         const [current, ...rest] = matchedRoutes
         const isMatched = current?.route.path === route.path
 
@@ -50,11 +60,12 @@ function MenuItems({ routes, prefix = '', matchedRoutes, onClick }: MenuItemProp
           return (
             <li key={path}>
               <CollapseMenuItem defaultOpened={isMatched} label={route?.title}>
+                {/* There are children, so the recursive rendering is required */}
                 <ul>
                   <MenuItems
                     onClick={onClick}
                     routes={route.children}
-                    prefix={path}
+                    base={path}
                     matchedRoutes={rest}
                   />
                 </ul>
@@ -70,6 +81,9 @@ function MenuItems({ routes, prefix = '', matchedRoutes, onClick }: MenuItemProp
               to={path}
               className={cx(classes.menuItem, isMatched && classes.active)}
               onClick={onClick}
+              // ActiveRef must be on the matching menu item of the last loop
+              // So it must be a anchor
+              ref={isMatched ? (activeRef as MutableRefObject<HTMLAnchorElement>) : undefined}
             >
               {route?.title}
             </UnstyledButton>
@@ -80,10 +94,16 @@ function MenuItems({ routes, prefix = '', matchedRoutes, onClick }: MenuItemProp
   )
 }
 
-function getPath(route: RouteData, prefix: string) {
-  if (route.index) return prefix
-  if (route.path?.startsWith('/') || prefix === '') return route.path as string
-  return prefix.endsWith('/') ? prefix + route.path : `${prefix}/${route.path}`
+/**
+ * Join the path with route data and base
+ * @param route Data of single route
+ * @param base Base path
+ * @returns Complete path
+ */
+function joinPath(route: RouteData, base: string) {
+  if (route.index) return base
+  if (route.path?.startsWith('/') || base === '') return route.path as string
+  return base.endsWith('/') ? base + route.path : `${base}/${route.path}`
 }
 
 export default NavbarMenu
