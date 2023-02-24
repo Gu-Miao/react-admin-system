@@ -1,6 +1,11 @@
 import { createStyles } from '@mantine/core'
 
 export default createStyles(() => ({
+  list: {
+    '& li:not(:last-child)': {
+      marginBottom: 4,
+    },
+  },
   menuItem: {
     display: 'block',
     padding: '16px 8px',

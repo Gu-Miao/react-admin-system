@@ -13,8 +13,8 @@ export default createStyles((_, __, getRef) => ({
     },
   },
   content: {
-    padding: 0,
-    paddingLeft: 6,
+    padding: 6,
+    paddingRight: 0,
   },
   chevron: {
     transform: 'rotate(-90deg)',

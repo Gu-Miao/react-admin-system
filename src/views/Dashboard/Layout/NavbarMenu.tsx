@@ -7,6 +7,7 @@ import useStyles from './NavbarMenu.styles'
 
 function NavbarMenu() {
   const location = useLocation()
+  const { classes } = useStyles()
   const [, ...matchedRoutes] = matchRoutes(
     router.routes,
     location,
@@ -17,7 +18,7 @@ function NavbarMenu() {
   )
 
   return (
-    <ul>
+    <ul className={classes.list}>
       <MenuItems routes={topLevelRoutes} matchedRoutes={matchedRoutes} />
     </ul>
   )
@@ -31,6 +32,7 @@ interface MenuItemProps {
 
 function MenuItems({ routes, prefix = '', matchedRoutes }: MenuItemProps) {
   const { classes, cx } = useStyles()
+
   return (
     <>
       {routes.map(route => {
