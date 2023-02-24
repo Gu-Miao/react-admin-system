@@ -20,7 +20,7 @@ function LayoutFooter() {
   )
 }
 
-function AppLayout() {
+function Layout() {
   const user = useAppSelector(selectUser)
 
   if (user.initializing) {
@@ -36,4 +36,4 @@ function AppLayout() {
   )
 }
 
-export default AppLayout
+export default Layout

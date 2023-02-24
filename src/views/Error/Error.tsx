@@ -1,6 +1,6 @@
 import { Title, Text } from '@mantine/core'
 import { ReactComponent as NotFound } from '@/assets/images/not-found.svg'
-import useStyles from './index.styles'
+import useStyles from './Error.styles'
 
 function Error() {
   const { classes } = useStyles()

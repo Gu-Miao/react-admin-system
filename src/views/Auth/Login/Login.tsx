@@ -17,7 +17,7 @@ import { setUserInfo } from '@/store/user'
 import { sleep } from '@/utils'
 import message from '@/utils/message'
 import forage from '@/utils/forage'
-import useStyles from './index.styles'
+import useStyles from './Login.styles'
 
 const DEMO_USERNAME = 'admin'
 const DEMO_PASSWORD = 'ras123'

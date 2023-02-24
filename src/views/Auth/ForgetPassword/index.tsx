@@ -1,4 +1,2 @@
-function ForgetPassword() {
-  return <div>ForgetPassword</div>
-}
+import ForgetPassword from './ForgetPassword'
 export default ForgetPassword
