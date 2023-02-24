@@ -1,4 +1,4 @@
-import { memo, forwardRef, ComponentPropsWithoutRef } from 'react'
+import { forwardRef, ComponentPropsWithoutRef } from 'react'
 import { UnstyledButton } from '@mantine/core'
 import HeaderTooltip from './HeaderTooltip'
 import useStyles from './HeaderControl.styles'
@@ -20,4 +20,4 @@ const HeaderControl = forwardRef<HTMLButtonElement, HeaderControlProps>(
   },
 )
 
-export default memo(HeaderControl)
+export default HeaderControl

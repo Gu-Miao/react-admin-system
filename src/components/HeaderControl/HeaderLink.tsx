@@ -1,4 +1,4 @@
-import { memo, forwardRef, ComponentPropsWithoutRef, ForwardedRef } from 'react'
+import { forwardRef, ComponentPropsWithoutRef, ForwardedRef } from 'react'
 import { Anchor } from '@mantine/core'
 import HeaderTooltip from './HeaderTooltip'
 import useStyles from './HeaderControl.styles'
@@ -29,4 +29,4 @@ const HeaderLink = forwardRef<HTMLAnchorElement, HeaderLinkProps>(
   },
 )
 
-export default memo(HeaderLink)
+export default HeaderLink
