@@ -7,6 +7,7 @@ import { DirectionContext, DirectionContextProps } from '@/contexts/DirectionCon
 import { MantineProvider, createEmotionCache } from '@mantine/core'
 import { NotificationsProvider } from '@mantine/notifications'
 import { ModalsProvider } from '@mantine/modals'
+import { NavigationProgress } from '@mantine/nprogress'
 import { useToggle } from '@mantine/hooks'
 import theme from './theme'
 import rtlPlugin from 'stylis-plugin-rtl'
@@ -30,6 +31,7 @@ function App() {
             theme={{ ...theme, dir }}
             emotionCache={emotionCache}
           >
+            <NavigationProgress />
             <NotificationsProvider position="top-right">
               <ModalsProvider modalProps={{ centered: true }}>
                 <div dir={dir}>

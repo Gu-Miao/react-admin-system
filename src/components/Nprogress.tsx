@@ -1,18 +1,17 @@
 import { useEffect } from 'react'
-import nprogress from 'nprogress'
-import 'nprogress/nprogress.css'
-
-nprogress.configure({
-  showSpinner: false,
-})
+import {
+  setNavigationProgress,
+  startNavigationProgress,
+  completeNavigationProgress,
+} from '@mantine/nprogress'
 
 function Nprogress() {
   useEffect(() => {
-    nprogress.start()
-    return () => {
-      nprogress.done()
-    }
+    setNavigationProgress(0)
+    startNavigationProgress()
+    return completeNavigationProgress
   })
   return null
 }
+
 export default Nprogress
