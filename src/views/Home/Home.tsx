@@ -1,14 +1,21 @@
 import { AppShell, Container, Text, Group, Button, useMantineTheme } from '@mantine/core'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useAppSelector } from '@/hooks/useRedux'
+import { selectUser } from '@/store/user'
 import Header from '@/components/Header'
-import { ReactComponent as TitleBanner } from '@/assets/images/title-banner.svg'
 import { MarkGithubIcon } from '@primer/octicons-react'
+import { ReactComponent as TitleBanner } from '@/assets/images/title-banner.svg'
 import { ReactComponent as Wave } from '@/assets/images/wave.svg'
 import useStyles from './Home.styles'
 
 function Home() {
+  const user = useAppSelector(selectUser)
   const { classes, cx } = useStyles()
   const theme = useMantineTheme()
+
+  if (user.id) {
+    return <Navigate to="/dashboard" replace />
+  }
 
   return (
     <AppShell header={<Header />} styles={{ main: { padding: 0 } }}>

@@ -8,10 +8,10 @@ import {
   Avatar,
   Text,
   useMantineTheme,
-  Burger,
 } from '@mantine/core'
 import { useModals } from '@mantine/modals'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import MobileNav from './MobileNav'
 import SearchControl from '@/components/SearchControl'
 import { HeaderControl, HeaderLink, HeaderMenu } from '@/components/HeaderControl'
 import {
@@ -31,6 +31,7 @@ import {
 } from 'tabler-icons-react'
 import { MarkGithubIcon } from '@primer/octicons-react'
 import { ReactComponent as React } from '@/assets/images/react.svg'
+import { useMediaQuery } from '@mantine/hooks'
 import useBoolean from '@/hooks/useBoolean'
 import { useDirectionContext } from '@/contexts/DirectionContext'
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
@@ -42,11 +43,12 @@ function Header() {
   const modals = useModals()
   const user = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
-  const theme = useMantineTheme()
-  const [opened, toggleopened] = useBoolean(false)
   const [enableDarkMode, toggleEnableDarkMode] = useBoolean(false)
   const { dir, toggleDirection } = useDirectionContext()
   const { classes } = useStyles()
+  const location = useLocation()
+  const theme = useMantineTheme()
+  const matchs = useMediaQuery(`((max-width: ${theme.breakpoints.sm}px))`)
 
   function handleLogOutClick() {
     modals.openConfirmModal({
@@ -66,15 +68,7 @@ function Header() {
   return (
     <MantineHeader height={60} p="sm">
       <Group spacing={0} position="apart">
-        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-          <Burger
-            opened={opened}
-            onClick={() => toggleopened()}
-            size="sm"
-            color={theme.colors.gray[6]}
-            mr="xl"
-          />
-        </MediaQuery>
+        {location.pathname.startsWith('/dashboard') && matchs && <MobileNav />}
         <UnstyledButton component={Link} to="/">
           <Group spacing={0}>
             <React className={classes.logo} />

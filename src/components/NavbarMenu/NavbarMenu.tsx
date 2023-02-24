@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import { Link, matchRoutes, useLocation, RouteMatch } from 'react-router-dom'
 import { UnstyledButton } from '@mantine/core'
 import CollapseMenuItem from './CollapseMenuItem'
@@ -5,7 +6,11 @@ import useConst from '@/hooks/useConst'
 import router, { routes, RouteData } from '@/router'
 import useStyles from './NavbarMenu.styles'
 
-function NavbarMenu() {
+type NavbarMenuProps = {
+  onClick?: MouseEventHandler<HTMLAnchorElement>
+}
+
+function NavbarMenu({ onClick }: NavbarMenuProps) {
   const location = useLocation()
   const { classes } = useStyles()
   const [, ...matchedRoutes] = matchRoutes(
@@ -19,7 +24,7 @@ function NavbarMenu() {
 
   return (
     <ul className={classes.list}>
-      <MenuItems routes={topLevelRoutes} matchedRoutes={matchedRoutes} />
+      <MenuItems onClick={onClick} routes={topLevelRoutes} matchedRoutes={matchedRoutes} />
     </ul>
   )
 }
@@ -28,9 +33,10 @@ interface MenuItemProps {
   routes: RouteData[]
   prefix?: string
   matchedRoutes: RouteMatch[]
+  onClick?: NavbarMenuProps['onClick']
 }
 
-function MenuItems({ routes, prefix = '', matchedRoutes }: MenuItemProps) {
+function MenuItems({ routes, prefix = '', matchedRoutes, onClick }: MenuItemProps) {
   const { classes, cx } = useStyles()
 
   return (
@@ -45,7 +51,12 @@ function MenuItems({ routes, prefix = '', matchedRoutes }: MenuItemProps) {
             <li key={path}>
               <CollapseMenuItem defaultOpened={isMatched} label={route?.title}>
                 <ul>
-                  <MenuItems routes={route.children} prefix={path} matchedRoutes={rest} />
+                  <MenuItems
+                    onClick={onClick}
+                    routes={route.children}
+                    prefix={path}
+                    matchedRoutes={rest}
+                  />
                 </ul>
               </CollapseMenuItem>
             </li>
@@ -58,6 +69,7 @@ function MenuItems({ routes, prefix = '', matchedRoutes }: MenuItemProps) {
               component={Link}
               to={path}
               className={cx(classes.menuItem, isMatched && classes.active)}
+              onClick={onClick}
             >
               {route?.title}
             </UnstyledButton>
