@@ -3,7 +3,7 @@
 ## Features
 
 - [x] React 18
-- [x] Customize webpack config
+- [x] Based on vite
 - [x] CSS in JS
 - [x] Typescript
 - [x] Mantine UI libarary
@@ -21,3 +21,7 @@
 - [ ] Animation
 - [ ] Themes
 - [ ] Dark Mode
+
+# License
+
+MIT

@@ -8,8 +8,8 @@ import Home from './views/Home/Home'
  * @param path Component path, relative to `/src/${prefix}/`
  * @param prefix Component path prefix, default is `views`
  */
-function getLazyComponent(path: string, prefix = 'views'): ReactNode {
-  const Component = lazy(() => import(`./${prefix}/${path}`))
+function getLazyComponent(factory: Required<RouteData>['lazy']): ReactNode {
+  const Component = lazy(factory)
 
   return (
     <Suspense fallback={<Nprogress />}>
@@ -21,6 +21,7 @@ function getLazyComponent(path: string, prefix = 'views'): ReactNode {
 export type RouteData = Omit<RouteObject, 'children'> & {
   title?: string
   children?: RouteData[]
+  lazy?: Parameters<typeof lazy>[0]
 }
 
 /** Data of routes */
@@ -28,71 +29,71 @@ export const routes: RouteData[] = [
   { path: '/', element: <Home /> },
   {
     path: 'auth',
-    element: getLazyComponent('Auth/Layout'),
+    lazy: () => import('@/views/Auth/Layout'),
     children: [
-      { path: 'login', element: getLazyComponent('Auth/Login') },
-      { path: 'forget-password', element: getLazyComponent('Auth/ForgetPassword') },
+      { path: 'login', lazy: () => import('@/views/Auth/Login') },
+      { path: 'forget-password', lazy: () => import('@/views/Auth/ForgetPassword') },
     ],
   },
   {
     path: 'dashboard',
-    element: getLazyComponent('Dashboard/Layout'),
+    lazy: () => import('@/views/Dashboard/Layout'),
     children: [
-      { index: true, element: getLazyComponent('Dashboard/Overview'), title: 'Overview' },
-      { path: 'users', element: getLazyComponent('Dashboard/Overview'), title: 'Users' },
-      { path: 'roles', element: getLazyComponent('Dashboard/Overview'), title: 'Roles' },
+      { index: true, lazy: () => import('@/views/Dashboard/Overview'), title: 'Overview' },
+      { path: 'users', lazy: () => import('@/views/Dashboard/Overview'), title: 'Users' },
+      { path: 'roles', lazy: () => import('@/views/Dashboard/Overview'), title: 'Roles' },
       {
         path: 'organization',
-        element: getLazyComponent('Dashboard/Overview'),
+        lazy: () => import('@/views/Dashboard/Overview'),
         title: 'Organization',
       },
-      { path: 'modules', element: getLazyComponent('Dashboard/Overview'), title: 'Modules' },
+      { path: 'modules', lazy: () => import('@/views/Dashboard/Overview'), title: 'Modules' },
       {
         path: 'data-dictionary',
-        element: getLazyComponent('Dashboard/Overview'),
+        lazy: () => import('@/views/Dashboard/Overview'),
         title: 'Data Dictionary',
       },
       {
         path: 'data',
         title: 'Data',
         children: [
-          { path: 'overview', element: getLazyComponent('Dashboard/Overview'), title: 'Overview' },
+          { path: 'overview', lazy: () => import('@/views/Dashboard/Overview'), title: 'Overview' },
           {
             path: 'map-tiles',
-            element: getLazyComponent('Dashboard/Overview'),
+            lazy: () => import('@/views/Dashboard/Overview'),
             title: 'Map Tiles',
           },
-          { path: 'terrain', element: getLazyComponent('Dashboard/Overview'), title: 'Terrain' },
-          { path: 'labels', element: getLazyComponent('Dashboard/Overview'), title: 'Labels' },
-          { path: 'models', element: getLazyComponent('Dashboard/Overview'), title: 'Models' },
+          { path: 'terrain', lazy: () => import('@/views/Dashboard/Overview'), title: 'Terrain' },
+          { path: 'labels', lazy: () => import('@/views/Dashboard/Overview'), title: 'Labels' },
+          { path: 'models', lazy: () => import('@/views/Dashboard/Overview'), title: 'Models' },
           {
             path: '3d-tiles',
             title: '3D Tiles',
             children: [
               {
                 path: 'buildings',
-                element: getLazyComponent('Dashboard/Overview'),
+                lazy: () => import('@/views/Dashboard/Overview'),
                 title: 'Buildings',
               },
-              { path: 'trees', element: getLazyComponent('Dashboard/Overview'), title: 'Trees' },
+              { path: 'trees', lazy: () => import('@/views/Dashboard/Overview'), title: 'Trees' },
               {
                 path: 'highways',
-                element: getLazyComponent('Dashboard/Overview'),
+                lazy: () => import('@/views/Dashboard/Overview'),
                 title: 'Highways',
               },
             ],
           },
           {
             path: 'materials',
-            element: getLazyComponent('Dashboard/Overview'),
+            lazy: () => import('@/views/Dashboard/Overview'),
             title: 'Materials',
           },
         ],
       },
-      { path: 'records', element: getLazyComponent('Dashboard/Overview'), title: 'Records' },
+      { path: 'records', lazy: () => import('@/views/Dashboard/Overview'), title: 'Records' },
     ],
   },
-  { path: '*', element: getLazyComponent('Error') },
+  { path: '*', lazy: () => import('@/views/Error') },
 ]
 
 /** Get routes from data */
@@ -100,8 +101,12 @@ function getRoutes(routes: RouteData[]): RouteObject[] {
   return routes.map(route => {
     const newRoute = { ...route }
     delete newRoute.title
+    if (newRoute.lazy) {
+      newRoute.element = getLazyComponent(newRoute.lazy)
+      delete newRoute.lazy
+    }
     return { ...newRoute, children: route.children && getRoutes(route.children) } as RouteObject
   })
 }
 
-export default createBrowserRouter(getRoutes(routes), { basename: process.env.PUBLIC_URL })
+export default createBrowserRouter(getRoutes(routes), { basename: import.meta.env.BASE_URL })

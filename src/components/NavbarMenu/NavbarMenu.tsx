@@ -16,7 +16,7 @@ function NavbarMenu({ onClick }: NavbarMenuProps) {
   const [, ...matchedRoutes] = matchRoutes(
     router.routes,
     location,
-    process.env.PUBLIC_URL,
+    import.meta.env.BASE_URL,
   ) as RouteMatch[]
   const topLevelRoutes = useConst(
     routes.find(route => route.path === 'dashboard')?.children as RouteData[],
