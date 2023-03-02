@@ -52,11 +52,11 @@ async function generate(path) {
 
 /** @param {string} name */
 function createTsx(name) {
-  return `function ${name}() {\n  return <div></div>\n}\nexport default ${name}\n`
+  return `function ${name}() {\n  return <div></div>\n}\n\nexport default ${name}\n`
 }
 
 function createStylesTs() {
-  return `import { createStyles } from '@mantine/core'\nexport default createStyles(() => ({}))\n`
+  return `import { createStyles } from '@mantine/core'\n\nexport default createStyles(() => ({}))\n`
 }
 
 /** @param {string} name */

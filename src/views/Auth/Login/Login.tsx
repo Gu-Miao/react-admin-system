@@ -91,7 +91,6 @@ function Login() {
           placeholder="Please input your username"
           label="Username"
           description="email or phone number is also ok"
-          size="lg"
           required
           disabled={submitting}
           {...form.getInputProps('username')}
@@ -100,17 +99,23 @@ function Login() {
           className={classes.formItem}
           placeholder="Please input your password"
           label="Password"
-          description="6~16 length, made of letters and numbers"
-          size="lg"
+          description={
+            <div className={classes.passwordDescription}>
+              <span>6~16 length, made of letters and numbers</span>
+              <Link className={classes.forgetPasswordDiv} to="/auth/forget-password">
+                Forget password?
+              </Link>
+            </div>
+          }
           required
           disabled={submitting}
           {...form.getInputProps('password')}
         />
         <Group position="apart">
           <Checkbox label="Remember me" disabled={submitting} {...form.getInputProps('remember')} />
-          <Link to="forget-password">Forget password?</Link>
+          <Link to="/auth/register">No account yet? register</Link>
         </Group>
-        <Button className={classes.submit} loading={submitting} type="submit" fullWidth size="lg">
+        <Button className={classes.submit} loading={submitting} type="submit" fullWidth>
           Login
         </Button>
       </form>

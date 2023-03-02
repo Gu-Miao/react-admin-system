@@ -33,13 +33,11 @@ export default createStyles(theme => ({
   submit: {
     marginTop: 32,
   },
-  passwordDescription: {
-    position: 'relative',
+  rightSection: {
+    width: 'auto',
+    right: 4,
   },
-  forgetPasswordDiv: {
-    position: 'absolute',
-    right: 0,
-    bottom: 3,
-    fontSize: 16,
+  input: {
+    paddingRight: 65,
   },
 }))
