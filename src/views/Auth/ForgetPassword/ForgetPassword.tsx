@@ -130,7 +130,7 @@ function ForgetPassword() {
             description="Verification code will send to your phone"
             required
             maxLength={6}
-            disabled={verified && submitting}
+            disabled={verified || submitting}
             {...form.getInputProps('verification')}
             rightSection={
               <Button size="xs" onClick={sendVerificationCode} disabled={vcd > 0}>
@@ -154,7 +154,7 @@ function ForgetPassword() {
               className={classes.formItem}
               placeholder="Please confirm your password"
               label="Confirm password"
-              description="Input the same password agin"
+              description="Input the same password again"
               required
               disabled={submitting}
               {...form.getInputProps('confirm')}

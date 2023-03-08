@@ -12,7 +12,6 @@ export default createStyles(() => ({
     alignItems: 'center',
   },
   box: {
-    marginTop: -100,
     width: '100%',
     maxWidth: 500,
     padding: '42px 20px',

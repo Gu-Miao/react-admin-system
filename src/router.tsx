@@ -33,6 +33,7 @@ export const routes: RouteData[] = [
     children: [
       { path: 'login', lazy: () => import('@/views/Auth/Login') },
       { path: 'forget-password', lazy: () => import('@/views/Auth/ForgetPassword') },
+      { path: 'register', lazy: () => import('@/views/Auth/Register') },
     ],
   },
   {
