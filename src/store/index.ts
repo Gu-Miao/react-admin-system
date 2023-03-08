@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import user, { initUserInfo } from './user'
+import layout from './layout'
 
 const store = configureStore({
   reducer: {
     user,
+    layout,
   },
 })
 

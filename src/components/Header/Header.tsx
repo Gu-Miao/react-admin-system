@@ -33,18 +33,18 @@ import { MarkGithubIcon } from '@primer/octicons-react'
 import { ReactComponent as React } from '@/assets/images/react.svg'
 import { useMediaQuery } from '@mantine/hooks'
 import useBoolean from '@/hooks/useBoolean'
-import { useDirectionContext } from '@/contexts/DirectionContext'
 import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
 import { setUserInfo, selectUser } from '@/store/user'
+import { toggleDirection, selectLayout } from '@/store/layout'
 import forage from '@/utils/forage'
 import useStyles from './Header.styles'
 
 function Header() {
   const modals = useModals()
   const user = useAppSelector(selectUser)
+  const layout = useAppSelector(selectLayout)
   const dispatch = useAppDispatch()
   const [enableDarkMode, toggleEnableDarkMode] = useBoolean(false)
-  const { dir, toggleDirection } = useDirectionContext()
   const { classes } = useStyles()
   const location = useLocation()
   const theme = useMantineTheme()
@@ -95,10 +95,10 @@ function Header() {
             </HeaderMenu.Dropdown>
           </HeaderMenu>
           <HeaderControl
-            tooltip={`${dir.toUpperCase()} direction`}
-            onClick={() => toggleDirection()}
+            tooltip={`${layout.dir.toUpperCase()} direction`}
+            onClick={() => dispatch(toggleDirection())}
           >
-            {dir === 'rtl' ? <TextDirectionLtr /> : <TextDirectionRtl />}
+            {layout.dir === 'rtl' ? <TextDirectionLtr /> : <TextDirectionRtl />}
           </HeaderControl>
           <HeaderControl
             tooltip={enableDarkMode ? 'Light mode' : 'Dark mode'}
